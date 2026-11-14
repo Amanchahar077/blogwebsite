@@ -1,0 +1,2787 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE CHRONICLE | Global Affairs, Geopolitics & Policy Intelligence</title>
+    <meta name="description" content="In-depth analysis, breaking global dispatches, economic trends, and geopolitical foresight for the modern era.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           MODERN CSS RESET & DESIGN SYSTEM VARIABLES
+           ========================================================================== */
+        :root {
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Dark Theme (Default) */
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #131c31;
+            --bg-card-hover: #192540;
+            --bg-glass: rgba(15, 23, 42, 0.85);
+            --bg-subtle: rgba(255, 255, 255, 0.04);
+
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-focus: rgba(59, 130, 246, 0.5);
+
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+
+            --primary: #3b82f6;
+            --primary-rgb: 59, 130, 246;
+            --primary-hover: #60a5fa;
+
+            --tag-breaking: #ef4444;
+            --tag-geo: #3b82f6;
+            --tag-econ: #10b981;
+            --tag-tech: #8b5cf6;
+            --tag-climate: #06b6d4;
+            --tag-security: #f59e0b;
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
+
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+
+            --max-w: 1360px;
+            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-body: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --bg-subtle: rgba(0, 0, 0, 0.03);
+
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-focus: rgba(37, 99, 235, 0.4);
+
+            --text-main: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #8e9bb0;
+
+            --primary: #2563eb;
+            --primary-rgb: 37, 99, 235;
+            --primary-hover: #1d4ed8;
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.1);
+            --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.12);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        button, input {
+            font-family: inherit;
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ==========================================================================
+           TOP TICKER & MARKET BAR
+           ========================================================================== */
+        .top-bar {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 0.45rem 0;
+        }
+
+        .top-bar-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .live-date {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .breaking-tag {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--tag-breaking);
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            padding: 0.15rem 0.6rem;
+            border-radius: var(--radius-xs);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-transform: uppercase;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--tag-breaking);
+            border-radius: 50%;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 7px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .ticker-headline {
+            color: var(--text-main);
+            font-weight: 500;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .ticker-headline:hover {
+            color: var(--primary);
+        }
+
+        .market-strip {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+        }
+
+        .market-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .market-up { color: var(--tag-econ); }
+        .market-down { color: var(--tag-breaking); }
+
+        /* ==========================================================================
+           HEADER & NAVIGATION
+           ========================================================================== */
+        header.site-header {
+            background: var(--bg-glass);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 0;
+            gap: 1.5rem;
+        }
+
+        .brand-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.05em;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+        }
+
+        .brand-text h1 {
+            font-family: var(--font-serif);
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            color: var(--text-main);
+        }
+
+        .brand-text span {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .search-form {
+            flex: 1;
+            max-width: 380px;
+            position: relative;
+        }
+
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-full);
+            padding: 0.45rem 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input-wrapper:focus-within {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .search-input-wrapper svg {
+            width: 17px;
+            height: 17px;
+            color: var(--text-muted);
+            margin-right: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .search-input-wrapper input {
+            width: 100%;
+            color: var(--text-main);
+            font-size: 0.88rem;
+        }
+
+        .search-input-wrapper input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-subtle);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            color: var(--primary);
+            background: var(--bg-surface);
+            border-color: var(--primary);
+        }
+
+        .icon-btn svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .bookmark-badge {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            border-radius: 50%;
+            width: 17px;
+            height: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-subscribe {
+            background: var(--primary);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.55rem 1.25rem;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.3);
+        }
+
+        .btn-subscribe:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Nav Links */
+        .site-nav {
+            border-top: 1px solid var(--border-subtle);
+            padding: 0.5rem 0;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            font-size: 0.86rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: 0.35rem 0.8rem;
+            border-radius: var(--radius-full);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-main);
+            background: var(--bg-subtle);
+        }
+
+        .nav-link.active {
+            font-weight: 600;
+            color: var(--primary);
+            background: rgba(var(--primary-rgb), 0.1);
+        }
+
+        /* ==========================================================================
+           FEATURED / HERO SECTION
+           ========================================================================== */
+        .hero-section {
+            padding: 2.2rem 0 1.5rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.8rem;
+        }
+
+        .lead-story {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 480px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .lead-story:hover {
+            transform: translateY(-3px);
+            border-color: rgba(var(--primary-rgb), 0.4);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .lead-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: brightness(0.78);
+        }
+
+        .lead-story:hover .lead-image {
+            transform: scale(1.03);
+            filter: brightness(0.85);
+        }
+
+        .lead-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(9, 13, 22, 0) 25%, rgba(9, 13, 22, 0.7) 60%, rgba(9, 13, 22, 0.96) 100%);
+        }
+
+        [data-theme="light"] .lead-overlay {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0) 25%, rgba(15, 23, 42, 0.65) 60%, rgba(15, 23, 42, 0.95) 100%);
+        }
+
+        .lead-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.2rem;
+            color: #ffffff;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.22rem 0.65rem;
+            border-radius: var(--radius-xs);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .badge-geo { background: var(--tag-geo); }
+        .badge-econ { background: var(--tag-econ); }
+        .badge-tech { background: var(--tag-tech); }
+        .badge-climate { background: var(--tag-climate); }
+        .badge-security { background: var(--tag-security); }
+
+        .read-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            opacity: 0.85;
+            font-size: 0.78rem;
+        }
+
+        .lead-title {
+            font-family: var(--font-serif);
+            font-size: 2.1rem;
+            line-height: 1.22;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .lead-excerpt {
+            font-size: 0.96rem;
+            line-height: 1.55;
+            opacity: 0.88;
+            margin-bottom: 1.4rem;
+            max-width: 90%;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .author-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .author-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 0.86rem;
+        }
+
+        .author-role {
+            font-size: 0.73rem;
+            opacity: 0.75;
+        }
+
+        .lead-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-card-action {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .btn-card-action:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.08);
+        }
+
+        /* Hero Sidebar: Key Briefing & Intelligence */
+        .hero-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .sidebar-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .sidebar-badge {
+            font-size: 0.68rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: var(--radius-full);
+            background: rgba(var(--primary-rgb), 0.12);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .briefing-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.95rem;
+        }
+
+        .briefing-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid var(--border-subtle);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .briefing-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .briefing-item:hover .briefing-heading {
+            color: var(--primary);
+        }
+
+        .briefing-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .briefing-heading {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.38;
+            transition: var(--transition);
+        }
+
+        /* Audio Pulse Widget */
+        .audio-brief-widget {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: var(--radius-md);
+            padding: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .audio-play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.4);
+            transition: var(--transition);
+        }
+
+        .audio-play-btn:hover {
+            transform: scale(1.08);
+            background: var(--primary-hover);
+        }
+
+        .audio-play-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-left: 2px;
+        }
+
+        .audio-details {
+            flex: 1;
+        }
+
+        .audio-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .audio-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.25;
+            margin-top: 0.1rem;
+        }
+
+        .audio-progress {
+            margin-top: 0.4rem;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        [data-theme="light"] .audio-progress {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        .audio-progress-bar {
+            width: 32%;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* ==========================================================================
+           TOPIC FILTER TABS & TOOLBAR
+           ========================================================================== */
+        .filter-section {
+            padding: 1rem 0 1.5rem;
+        }
+
+        .filter-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.9rem;
+        }
+
+        .filter-tabs {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            font-size: 0.83rem;
+            font-weight: 600;
+            padding: 0.42rem 1.05rem;
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            border-color: var(--border-focus);
+        }
+
+        .tab-btn.active {
+            background: var(--text-main);
+            color: var(--bg-body);
+            border-color: var(--text-main);
+        }
+
+        .sort-view {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .sort-select {
+            background: var(--bg-surface);
+            color: var(--text-main);
+            border: 1px solid var(--border-subtle);
+            padding: 0.35rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* ==========================================================================
+           MAIN CONTENT GRID: ARTICLES & DISPATCHES
+           ========================================================================== */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 2.7fr 1.3fr;
+            gap: 2.4rem;
+            padding: 1.5rem 0 4rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.6rem;
+        }
+
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-focus);
+            box-shadow: var(--shadow-md);
+        }
+
+        .article-card-media {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: var(--bg-surface);
+        }
+
+        .article-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-card-media img {
+            transform: scale(1.05);
+        }
+
+        .media-badge {
+            position: absolute;
+            top: 0.8rem;
+            left: 0.8rem;
+            z-index: 2;
+        }
+
+        .card-bookmark-btn {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            z-index: 2;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: var(--transition);
+        }
+
+        .card-bookmark-btn:hover, .card-bookmark-btn.saved {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .article-card-body {
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .article-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+            transition: var(--transition);
+        }
+
+        .article-card:hover .article-title {
+            color: var(--primary);
+        }
+
+        .article-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 1.2rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .article-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.9rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .author-mini {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .author-mini-img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .read-more-link {
+            font-weight: 600;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .read-more-link:hover {
+            gap: 0.45rem;
+        }
+
+        /* ==========================================================================
+           SIDEBAR WIDGETS (RIGHT COLUMN)
+           ========================================================================== */
+        .content-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .widget-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-main);
+        }
+
+        .widget-title svg {
+            color: var(--primary);
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Live Timeline / Happening Now */
+        .timeline-list {
+            list-style: none;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .timeline-list::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: var(--border-subtle);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.2rem;
+            cursor: pointer;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.2rem;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .timeline-time {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-bottom: 0.15rem;
+        }
+
+        .timeline-title {
+            font-size: 0.86rem;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-title {
+            color: var(--primary);
+        }
+
+        /* Opinion / Columnists */
+        .opinion-card {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            cursor: pointer;
+        }
+
+        .opinion-card:first-child {
+            padding-top: 0;
+        }
+
+        .opinion-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .opinion-author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid var(--border-subtle);
+        }
+
+        .opinion-meta {
+            flex: 1;
+        }
+
+        .opinion-byline {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .opinion-quote {
+            font-family: var(--font-serif);
+            font-size: 0.98rem;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin-top: 0.25rem;
+            transition: var(--transition);
+        }
+
+        .opinion-card:hover .opinion-quote {
+            color: var(--primary);
+        }
+
+        /* Data Pulse: Chart of the Day Widget */
+        .data-visual-box {
+            background: var(--bg-surface);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .data-stat-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .data-stat-num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            font-family: var(--font-mono);
+        }
+
+        .data-stat-badge {
+            font-size: 0.72rem;
+            color: var(--tag-econ);
+            font-weight: 600;
+        }
+
+        .data-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .data-bar-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            font-size: 0.75rem;
+        }
+
+        .data-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+        }
+
+        .data-track {
+            height: 6px;
+            background: var(--bg-subtle);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .data-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Trending Tags Cloud */
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .tag-pill {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition);
+        }
+
+        .tag-pill:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* ==========================================================================
+           NEWSLETTER CALLOUT SECTION
+           ========================================================================== */
+        .newsletter-section {
+            padding: 2.5rem 0 4rem;
+        }
+
+        .newsletter-card {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 70%, #090d16 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 3.5rem 2.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="light"] .newsletter-card {
+            background: linear-gradient(135deg, #1e40af 0%, #1e293b 80%, #0f172a 100%);
+        }
+
+        .newsletter-glow {
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-tag {
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #60a5fa;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .newsletter-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            line-height: 1.25;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .newsletter-subtitle {
+            font-size: 0.96rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            align-items: center;
+            max-width: 480px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-full);
+            padding: 0.35rem 0.4rem 0.35rem 1.2rem;
+            transition: var(--transition);
+        }
+
+        .newsletter-form:focus-within {
+            border-color: #60a5fa;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.35);
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            color: white;
+            font-size: 0.92rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #94a3b8;
+        }
+
+        .newsletter-form button {
+            background: #ffffff;
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 0.86rem;
+            padding: 0.65rem 1.4rem;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: #3b82f6;
+            color: #ffffff;
+            transform: scale(1.02);
+        }
+
+        .newsletter-disclaimer {
+            font-size: 0.72rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        footer.site-footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-subtle);
+            padding: 4rem 0 2rem;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h2 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-brand p {
+            line-height: 1.6;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            max-width: 320px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .social-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: var(--bg-surface);
+        }
+
+        .footer-col h3 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-main);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.84rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 3px;
+        }
+
+        .footer-bottom {
+            padding-top: 1.8rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* ==========================================================================
+           ARTICLE READER MODAL
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 820px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.96) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: sticky;
+            top: 1.2rem;
+            right: 1.2rem;
+            margin-left: auto;
+            margin-right: 1.2rem;
+            margin-top: 1.2rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            color: var(--tag-breaking);
+            border-color: var(--tag-breaking);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 0 2.5rem 3rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+        }
+
+        .modal-headline {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            line-height: 1.24;
+            color: var(--text-main);
+            margin: 0.8rem 0;
+        }
+
+        .modal-reader-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+        }
+
+        .modal-reader-content p {
+            margin-bottom: 1.4rem;
+        }
+
+        .key-takeaways {
+            background: var(--bg-surface);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.2rem 1.4rem;
+            margin: 1.6rem 0;
+        }
+
+        .key-takeaways h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .key-takeaways ul {
+            padding-left: 1.2rem;
+            font-size: 0.92rem;
+            color: var(--text-main);
+        }
+
+        .key-takeaways li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Reader toolbar */
+        .reader-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            margin: 1.2rem 0;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .font-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .font-btn {
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-xs);
+            background: var(--bg-subtle);
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        .font-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Toast feedback */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--text-main);
+            color: var(--bg-body);
+            padding: 0.75rem 1.4rem;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE BREAKPOINTS
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .market-strip {
+                display: none;
+            }
+
+            .header-main {
+                flex-wrap: wrap;
+            }
+
+            .search-form {
+                order: 3;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lead-story {
+                min-height: 380px;
+            }
+
+            .lead-title {
+                font-size: 1.6rem;
+            }
+
+            .newsletter-title {
+                font-size: 1.7rem;
+            }
+
+            .newsletter-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .modal-body {
+                padding: 0 1.2rem 2rem;
+            }
+
+            .modal-headline {
+                font-size: 1.6rem;
+            }
+
+            .modal-image {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Breaking Ticker & Global Market Pulse -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-left">
+                <span class="live-date" id="currentDate">
+                    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    Saturday, Nov 14, 2026
+                </span>
+                <span class="breaking-tag">
+                    <span class="pulse-dot"></span>
+                    Developing
+                </span>
+                <a href="#featured" class="ticker-headline" id="tickerText">
+                    Geneva Summit: Global AI Safety & Non-Proliferation Treaty ratified by 42 member states
+                </a>
+            </div>
+            <div class="market-strip">
+                <div class="market-item">
+                    <span>S&P 500</span>
+                    <span class="market-up">+0.68% ▲</span>
+                </div>
+                <div class="market-item">
+                    <span>NASDAQ</span>
+                    <span class="market-up">+1.12% ▲</span>
+                </div>
+                <div class="market-item">
+                    <span>BRENT</span>
+                    <span class="market-down">$74.20 ▼</span>
+                </div>
+                <div class="market-item">
+                    <span>EUR/USD</span>
+                    <span class="market-up">1.092 ▲</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-main">
+                <!-- Brand Identity -->
+                <a href="blog.html" class="brand-area">
+                    <div class="brand-logo-icon">C</div>
+                    <div class="brand-text">
+                        <h1>THE CHRONICLE</h1>
+                        <span>Global Affairs & Policy Dispatch</span>
+                    </div>
+                </a>
+
+                <!-- Instant Filter & Search -->
+                <form class="search-form" onsubmit="event.preventDefault();">
+                    <div class="search-input-wrapper">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Search world dispatches, policy, energy..." autocomplete="off">
+                    </div>
+                </form>
+
+                <!-- Actions: Theme Toggle, Bookmarks, Subscribe -->
+                <div class="header-actions">
+                    <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+                        <svg id="themeIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </button>
+                    <button class="icon-btn" id="bookmarkBtn" title="Saved Articles" onclick="filterSavedArticles()">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                        </svg>
+                        <span class="bookmark-badge" id="bookmarkCount">0</span>
+                    </button>
+                    <a href="#newsletter" class="btn-subscribe">
+                        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        Get Briefing
+                    </a>
+                </div>
+            </div>
+
+            <!-- Category Navigation -->
+            <nav class="site-nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link active" data-cat="all">All Dispatches</a></li>
+                    <li><a href="#" class="nav-link" data-cat="geopolitics">Geopolitics</a></li>
+                    <li><a href="#" class="nav-link" data-cat="economy">Global Economy</a></li>
+                    <li><a href="#" class="nav-link" data-cat="technology">Tech & AI Policy</a></li>
+                    <li><a href="#" class="nav-link" data-cat="climate">Climate & Energy</a></li>
+                    <li><a href="#" class="nav-link" data-cat="security">Security & Defense</a></li>
+                    <li><a href="#" class="nav-link" data-cat="perspectives">Perspectives</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- HERO SECTION: LEAD DISPATCH & INTELLIGENCE SIDEBAR -->
+        <section class="hero-section" id="featured">
+            <div class="hero-grid">
+                <!-- Big Hero Lead Story -->
+                <article class="lead-story" id="leadArticle" onclick="openArticleModal('lead')">
+                    <img class="lead-image" src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80" alt="Diplomacy Summit in Geneva">
+                    <div class="lead-overlay"></div>
+                    <div class="lead-content">
+                        <div class="meta-row">
+                            <span class="badge badge-geo">Geopolitics & Defense</span>
+                            <span class="read-time">
+                                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                6 min read
+                            </span>
+                            <span>• 24 mins ago</span>
+                        </div>
+                        <h2 class="lead-title">The Geneva Accord: 42 Nations Finalize First Comprehensive Global AI Safety Treaty</h2>
+                        <p class="lead-excerpt">
+                            Delegates in Switzerland achieve historic consensus on autonomous system guardrails, establishing rigorous audits for frontier compute models and non-proliferation protocols for algorithmic security.
+                        </p>
+                        <div class="author-bar">
+                            <div class="author-info">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" class="author-avatar" alt="Dr. Elena Vance">
+                                <div>
+                                    <div class="author-name">Dr. Elena Vance</div>
+                                    <div class="author-role">Chief Geopolitical Correspondent, Geneva</div>
+                                </div>
+                            </div>
+                            <div class="lead-actions" onclick="event.stopPropagation()">
+                                <button class="btn-card-action" title="Bookmark Story" onclick="toggleBookmark('lead', this)">
+                                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-card-action" title="Share Article" onclick="shareArticle('The Geneva Accord')">
+                                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Intelligence Sidebar -->
+                <div class="hero-sidebar">
+                    <!-- Daily Audio Brief Pill -->
+                    <div class="audio-brief-widget">
+                        <button class="audio-play-btn" id="audioBtn" onclick="toggleAudio()" title="Play Audio Briefing">
+                            <svg id="audioIcon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                        <div class="audio-details">
+                            <span class="audio-tag">Chronicle Morning Audio</span>
+                            <div class="audio-title">The 5-Minute Morning Geopolitical Brief</div>
+                            <div class="audio-progress">
+                                <div class="audio-progress-bar" id="audioBar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Developing Stories -->
+                    <div class="sidebar-card">
+                        <div class="sidebar-header">
+                            <h3 class="sidebar-title">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--primary);">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Fast Intel Feed
+                            </h3>
+                            <span class="sidebar-badge">Live Updates</span>
+                        </div>
+                        <ul class="briefing-list">
+                            <li class="briefing-item" onclick="openArticleModal('brief1')">
+                                <div class="briefing-meta">
+                                    <span>ECONOMY</span> • <span>14m ago</span>
+                                </div>
+                                <h4 class="briefing-heading">Central Banks Pilot Interoperable CBDC Wholesale Rails across Eurozone & Singapore</h4>
+                            </li>
+                            <li class="briefing-item" onclick="openArticleModal('brief2')">
+                                <div class="briefing-meta">
+                                    <span>CLIMATE</span> • <span>38m ago</span>
+                                </div>
+                                <h4 class="briefing-heading">North Sea Wind Supergrid Achieves Record 48GW Simultaneous Grid Injection</h4>
+                            </li>
+                            <li class="briefing-item" onclick="openArticleModal('brief3')">
+                                <div class="briefing-meta">
+                                    <span>SECURITY</span> • <span>1h ago</span>
+                                </div>
+                                <h4 class="briefing-heading">Indo-Pacific Naval Coalition Initiates Joint Maritime Drone Surveillance Corridors</h4>
+                            </li>
+                            <li class="briefing-item" onclick="openArticleModal('brief4')">
+                                <div class="briefing-meta">
+                                    <span>RESOURCES</span> • <span>2h ago</span>
+                                </div>
+                                <h4 class="briefing-heading">Lithium Extraction Innovation in Atacama Basin Lowers Freshwater Consumption by 85%</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOPIC FILTER TABS -->
+        <section class="filter-section">
+            <div class="filter-toolbar">
+                <div class="filter-tabs" id="categoryFilterTabs">
+                    <button class="tab-btn active" data-category="all">All Topics</button>
+                    <button class="tab-btn" data-category="geopolitics">Geopolitics</button>
+                    <button class="tab-btn" data-category="economy">Economy & Trade</button>
+                    <button class="tab-btn" data-category="technology">Technology & AI</button>
+                    <button class="tab-btn" data-category="climate">Energy & Climate</button>
+                    <button class="tab-btn" data-category="security">Defense</button>
+                </div>
+                <div class="sort-view">
+                    <span>Sort by:</span>
+                    <select class="sort-select" id="sortSelect" onchange="sortArticles()">
+                        <option value="latest">Latest First</option>
+                        <option value="readtime">Reading Time</option>
+                        <option value="popular">Most Discussed</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN GRID: ARTICLES (LEFT) + SIDEBAR WIDGETS (RIGHT) -->
+        <div class="content-layout">
+            <!-- Left: Articles Grid -->
+            <div>
+                <div class="articles-grid" id="articlesGrid">
+                    <!-- Populated via JavaScript dynamically with rich content -->
+                </div>
+                <div id="noResults" style="display: none; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+                    <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="margin: 0 auto 1rem; opacity: 0.5;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <h3>No matching dispatches found</h3>
+                    <p style="font-size: 0.9rem; margin-top: 0.4rem;">Try adjusting your keyword or category filter.</p>
+                </div>
+            </div>
+
+            <!-- Right: Secondary Column / Widgets -->
+            <aside class="content-sidebar">
+
+                <!-- Happening Now: Minute-by-Minute Live Timeline -->
+                <div class="widget-box">
+                    <h3 class="widget-title">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Happening Now
+                    </h3>
+                    <ul class="timeline-list">
+                        <li class="timeline-item" onclick="openArticleModal('live1')">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">22:15 UTC</div>
+                            <div class="timeline-title">UN Security Council convenes emergency closed-door consultation on subsea communication cable security.</div>
+                        </li>
+                        <li class="timeline-item" onclick="openArticleModal('live2')">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">21:40 UTC</div>
+                            <div class="timeline-title">Tokyo Stock Exchange expands carbon offset futures trading to sovereign municipal issuers.</div>
+                        </li>
+                        <li class="timeline-item" onclick="openArticleModal('live3')">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">20:55 UTC</div>
+                            <div class="timeline-title">African Continental Free Trade Area deploys unified digital customs tariff clearing portal.</div>
+                        </li>
+                        <li class="timeline-item" onclick="openArticleModal('live4')">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-time">19:30 UTC</div>
+                            <div class="timeline-title">Commercial space consortium deploys 12 methane monitoring orbital sensors over Permian Basin.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Opinion & Perspectives -->
+                <div class="widget-box">
+                    <h3 class="widget-title">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                        </svg>
+                        Perspectives & Columns
+                    </h3>
+
+                    <div class="opinion-card" onclick="openArticleModal('op1')">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" class="opinion-author-img" alt="Julian Sterling">
+                        <div class="opinion-meta">
+                            <span class="opinion-byline">Julian Sterling • Senior Fellow</span>
+                            <h4 class="opinion-quote">"The illusion of energy decoupling: Why critical mineral alliances require a pragmatic multipolar doctrine."</h4>
+                        </div>
+                    </div>
+
+                    <div class="opinion-card" onclick="openArticleModal('op2')">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" class="opinion-author-img" alt="Dr. Amara Sen">
+                        <div class="opinion-meta">
+                            <span class="opinion-byline">Dr. Amara Sen • Tech Policy Chair</span>
+                            <h4 class="opinion-quote">"Sovereign AI models are no longer an industrial luxury—they are the modern infrastructure of nationhood."</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data & Graphic Pulse: Chart of the Day -->
+                <div class="widget-box">
+                    <h3 class="widget-title">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        Chart of the Day
+                    </h3>
+                    <div style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                        Global Clean Energy Investment Momentum (2026 Projection)
+                    </div>
+                    <div class="data-visual-box">
+                        <div class="data-stat-header">
+                            <span class="data-stat-num">$2.4T</span>
+                            <span class="data-stat-badge">+18.4% YoY</span>
+                        </div>
+                        <div class="data-bars">
+                            <div class="data-bar-row">
+                                <div class="data-bar-labels">
+                                    <span>Solar & Storage</span>
+                                    <span>54%</span>
+                                </div>
+                                <div class="data-track">
+                                    <div class="data-fill" style="width: 54%; background: #3b82f6;"></div>
+                                </div>
+                            </div>
+                            <div class="data-bar-row">
+                                <div class="data-bar-labels">
+                                    <span>Offshore & Onshore Wind</span>
+                                    <span>28%</span>
+                                </div>
+                                <div class="data-track">
+                                    <div class="data-fill" style="width: 28%; background: #06b6d4;"></div>
+                                </div>
+                            </div>
+                            <div class="data-bar-row">
+                                <div class="data-bar-labels">
+                                    <span>Hydrogen & Clean Fuels</span>
+                                    <span>18%</span>
+                                </div>
+                                <div class="data-track">
+                                    <div class="data-fill" style="width: 18%; background: #10b981;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending Topics Tag Cloud -->
+                <div class="widget-box">
+                    <h3 class="widget-title">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/>
+                        </svg>
+                        Trending Tags
+                    </h3>
+                    <div class="tags-cloud">
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('GenevaSummit')">#GenevaSummit</a>
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('AIGovernance')">#AIGovernance</a>
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('Semiconductors')">#Semiconductors</a>
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('SupplyChains')">#SupplyChains</a>
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('CleanTech')">#CleanTech</a>
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('CriticalMinerals')">#CriticalMinerals</a>
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('CentralBanks')">#CentralBanks</a>
+                        <a href="javascript:void(0)" class="tag-pill" onclick="filterByTag('CyberDefense')">#CyberDefense</a>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+
+        <!-- NEWSLETTER SIGNUP SECTION -->
+        <section class="newsletter-section" id="newsletter">
+            <div class="newsletter-card">
+                <div class="newsletter-glow"></div>
+                <div class="newsletter-content">
+                    <span class="newsletter-tag">Direct to your inbox</span>
+                    <h2 class="newsletter-title">Stay Ahead of the Shifts Shaping Global Order</h2>
+                    <p class="newsletter-subtitle">
+                        Every weekday at 06:00 GMT, join 240,000+ diplomats, policy strategists, fund managers, and global thinkers receiving our curated geopolitical intelligence briefing.
+                    </p>
+                    <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+                        <input type="email" id="subscriberEmail" placeholder="Enter your institutional or personal email..." required>
+                        <button type="submit">Join Briefing</button>
+                    </form>
+                    <div class="newsletter-disclaimer">
+                        Zero spam. Unsubscribe anytime with a single click. Reviewed by senior editors.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>THE CHRONICLE</h2>
+                    <p>Independent, non-partisan international intelligence, data journalism, and geopolitical analysis for decision-makers worldwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Twitter / X">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.53 1.53 0 1 0 0-3.06 1.53 1.53 0 0 0 0 3.06m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+                        </a>
+                        <a href="#" class="social-link" title="RSS Feed">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Dispatches</h3>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" onclick="setCategory('geopolitics')">Geopolitics & Defense</a></li>
+                        <li><a href="javascript:void(0)" onclick="setCategory('economy')">Global Trade & Markets</a></li>
+                        <li><a href="javascript:void(0)" onclick="setCategory('technology')">AI & Tech Policy</a></li>
+                        <li><a href="javascript:void(0)" onclick="setCategory('climate')">Clean Transition & Climate</a></li>
+                        <li><a href="javascript:void(0)" onclick="setCategory('security')">Cyber & Regional Security</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Special Projects</h3>
+                    <ul class="footer-links">
+                        <li><a href="#featured">Geneva Summit Coverage</a></li>
+                        <li><a href="#">The Global Minerals Tracker</a></li>
+                        <li><a href="#">Sovereign Debt Map 2026</a></li>
+                        <li><a href="#">Deep Sea Cable Infrastructure</a></li>
+                        <li><a href="#">Space Economy Index</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Organization</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About The Chronicle</a></li>
+                        <li><a href="#">Editorial Ethics Code</a></li>
+                        <li><a href="#">Fact-Checking Standards</a></li>
+                        <li><a href="#">Institutional Subscriptions</a></li>
+                        <li><a href="#">Contact Newsroom</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 The Chronicle Media Group. All rights reserved. Registered ISSN 2419-8902.</div>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Dispatch</a>
+                    <a href="#">Security Disclosure</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ARTICLE READER MODAL (FULL STORY DRAWER) -->
+    <div class="modal-overlay" id="articleModal" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeArticleModal()" title="Close story">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <div class="modal-body" id="modalContent">
+                <!-- Injected dynamically via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toastNotification">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span id="toastMessage">Action successful</span>
+    </div>
+
+    <!-- ==========================================================================
+       CLIENT-SIDE JAVASCRIPT LOGIC
+       ========================================================================== -->
+    <script>
+        // Article Database for Current Affairs
+        const articles = [
+            {
+                id: 'lead',
+                category: 'geopolitics',
+                badgeClass: 'badge-geo',
+                badgeText: 'Geopolitics',
+                title: 'The Geneva Accord: 42 Nations Finalize First Comprehensive Global AI Safety Treaty',
+                desc: 'Delegates in Switzerland achieve historic consensus on autonomous system guardrails, establishing rigorous audits for frontier compute models and non-proliferation protocols for algorithmic security.',
+                author: 'Dr. Elena Vance',
+                role: 'Chief Geopolitical Correspondent',
+                authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+                image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1400&q=80',
+                date: 'Nov 14, 2026',
+                readTime: '6 min read',
+                takeaways: [
+                    'Treaty mandates third-party red-teaming for foundational models exceeding 10^26 FLOPs threshold.',
+                    'Creation of the International Algorithmic Oversight Agency (IAOA) headquartered in Vienna.',
+                    'Ratified by European Union, United States, Japan, Singapore, and 38 other participating nations.'
+                ],
+                fullText: `
+                    <p>GENEVA — Following fourteen months of intensive multilateral diplomacy, representatives from forty-two sovereign states formally concluded negotiations on the Geneva AI Treaty, cementing the first enforceable international framework governing frontier artificial intelligence systems and autonomous military hardware.</p>
+                    <p>The landmark accord establishes the International Algorithmic Oversight Agency (IAOA), an independent verification body modeled structurally after the IAEA. The agency will possess statutory authority to conduct compliance verifications on cutting-edge compute clusters, evaluate algorithmic alignment protocols, and maintain strict dual-use hardware registries.</p>
+                    <p>"We have reached a juncture where proactive regulation must outpace unintended systemic volatility," stated Swiss Foreign Minister Beatrix Laurent during the signing ceremony at the Palais des Nations. "This treaty preserves technological sovereignty while guaranteeing civilian safety thresholds that transcend borders."</p>
+                    <p>Key pillars of the treaty include binding bans on autonomous lethal decision matrices without fail-safe human latency loops, uniform watermarking standards for synthetic media across national networks, and reciprocal incident-reporting mechanisms within twelve hours of any critical system disruption.</p>
+                `
+            },
+            {
+                id: 'card-1',
+                category: 'economy',
+                badgeClass: 'badge-econ',
+                badgeText: 'Global Economy',
+                title: 'The De-Dollarization Reality Check: How Multilateral Settlement Corridors Actually Function',
+                desc: 'Behind sensationalist currency headlines lies a technical shift toward bilateral real-time gross settlement systems and local currency clearinghouses that are quietly re-architecting cross-border trade flows.',
+                author: 'Kavita Menon',
+                role: 'Senior Macro Analyst',
+                authorAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=120&q=80',
+                image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
+                date: 'Nov 14, 2026',
+                readTime: '5 min read',
+                takeaways: [
+                    'Over 32% of Eurasian commodity contracts now settle in non-G7 currency denominations.',
+                    'Interoperable domestic payment rails reduce clearing fees by up to 60 basis points.',
+                    'US Dollar preserves dominant global reserve currency status at 56%, albeit with declining marginal share.'
+                ],
+                fullText: `
+                    <p>LONDON — Global trade settlement is experiencing its most pronounced structural evolution since the 1944 Bretton Woods conference. Rather than an outright collapse of the US Dollar, the real narrative is the fragmentation into localized currency clearing corridors.</p>
+                    <p>Recent data from the Bank for International Settlements reveals that bilateral energy transactions settled in domestic currencies have surged by 44% year-over-year across ASEAN, South Asia, and the Gulf Cooperation Council.</p>
+                    <p>Direct currency pairings using central bank digital liquidity hubs eliminate intermediate conversion into reserve assets, saving multinational corporations tens of billions in frictional foreign exchange costs while dampening exposure to unilateral sanctions regimes.</p>
+                `
+            },
+            {
+                id: 'card-2',
+                category: 'climate',
+                badgeClass: 'badge-climate',
+                badgeText: 'Clean Transition',
+                title: 'Sodium-Ion Battery Mega-Grids Cross 500GWh Installed Capacity in Record Time',
+                desc: 'Abundant, low-cost sodium-ion chemistry is outperforming traditional lithium-iron-phosphate for stationary utility storage, breaking battery bottleneck constraints across developing nations.',
+                author: 'Marc Dupont',
+                role: 'Clean Energy Fellow',
+                authorAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+                image: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80',
+                date: 'Nov 13, 2026',
+                readTime: '4 min read',
+                takeaways: [
+                    'Sodium-ion cell costs plummeted below $38/kWh, rendering thermal peaking plants non-competitive.',
+                    'Supply chain relies on sodium carbonate and iron, freeing utilities from lithium and cobalt geopolitics.',
+                    'Operates reliably between -30°C and 55°C without degraded cycle efficiency.'
+                ],
+                fullText: `
+                    <p>NEW DELHI & ROTTERDAM — The global energy transition achieved a profound physical milestone this month as commercial sodium-ion grid storage installations surpassed half a terawatt-hour globally.</p>
+                    <p>Unlike automotive applications where gravimetric energy density is paramount, stationary grid storage prioritizes cycle longevity, safety, and raw material availability. Sodium, derived from common salt and abundant soda ash, provides an immune shield against commodity price spikes.</p>
+                    <p>Grid operators in Spain, India, and Australia report that sodium-ion battery units now deliver round-the-clock base load firming at a levelized cost of storage 40% cheaper than previously projected, accelerating coal retirement timelines by up to eight years.</p>
+                `
+            },
+            {
+                id: 'card-3',
+                category: 'technology',
+                badgeClass: 'badge-tech',
+                badgeText: 'Technology & AI',
+                title: 'Next-Generation High-NA EUV Foundry Race Reaches 1.4nm Production Milestones',
+                desc: 'Extreme ultraviolet lithography tools entering commercial silicon fabs represent the apex of precision engineering, as global powers compete to anchor the advanced semiconductor manufacturing frontier.',
+                author: 'Hansen Wei',
+                role: 'Semiconductor Strategy Editor',
+                authorAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80',
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+                date: 'Nov 13, 2026',
+                readTime: '7 min read',
+                takeaways: [
+                    'High Numerical Aperture (0.55 NA) systems allow single-exposure feature resolution under 8nm.',
+                    'Massive $400M tool costs prompt foundry joint ventures between sovereign funds and commercial fabricators.',
+                    'Next silicon architecture pivots toward 3D stacked Complementary FETs (CFET).'
+                ],
+                fullText: `
+                    <p>HSINCHU & EINDHOVEN — The physical laws of silicon scaling have once again been pushed backward. High-NA EUV systems—monolithic machines weighing over 150 metric tons and utilizing laser-pulsed tin droplets firing 50,000 times per second—have successfully yielded test wafers at sub-2nm nodes.</p>
+                    <p>With chip architectures transitioning toward Gate-All-Around (GAA) and back-side power delivery networks, these microscopic advancements dictate everything from server farm efficiency to missile guidance avionics.</p>
+                    <p>National semiconductor alliances have underscored that mastery over lithography optics represents the contemporary equivalent of 20th-century steel and oil dominance.</p>
+                `
+            },
+            {
+                id: 'card-4',
+                category: 'security',
+                badgeClass: 'badge-security',
+                badgeText: 'Defense & Cyber',
+                title: 'Quantum-Resistant Cryptography Mandates Take Effect Across Critical Banking Networks',
+                desc: 'Anticipating potential future quantum decryption capabilities, international financial regulators enforce Post-Quantum Cryptography (PQC) standards for all interbank transaction routing.',
+                author: 'Sarah O’Connor',
+                role: 'Cyber Intelligence Analyst',
+                authorAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80',
+                image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
+                date: 'Nov 12, 2026',
+                readTime: '5 min read',
+                takeaways: [
+                    'Lattice-based cryptography algorithms replace legacy RSA and Elliptic Curve signatures.',
+                    'Preventive defense against "Harvest Now, Decrypt Later" espionage campaigns.',
+                    'SWIFT, Fedwire, and TARGET2 complete foundational protocol upgrade cycles.'
+                ],
+                fullText: `
+                    <p>WASHINGTON & BRUSSELS — Financial regulators across 30 countries have initiated strict compliance enforcement deadlines requiring all Tier-1 banking institutions to migrate core data pipelines to post-quantum cryptographic primitives.</p>
+                    <p>Security agencies have long warned of state-backed entities actively exfiltrating encrypted diplomatic and financial dossiers with the intent to decrypt them once large-scale fault-tolerant quantum computers emerge.</p>
+                    <p>By enforcing lattice-based mathematical structures that resist quantum Shor\'s algorithm calculations, the financial sector is insulating trillions of daily value transfers against theoretical decryption vectors.</p>
+                `
+            },
+            {
+                id: 'card-5',
+                category: 'geopolitics',
+                badgeClass: 'badge-geo',
+                badgeText: 'Geopolitics',
+                title: 'The Arctic Sea Corridor: Commercial Shipping Rerouting Reshapes Northern Maritime Trade',
+                desc: 'Receding summer polar ice opens viable commercial transit through northern sea lanes, shaving 12 days off traditional Suez Canal transit times while triggering new territorial sovereignty debates.',
+                author: 'Lars Nygård',
+                role: 'Nordic Affairs Correspondent',
+                authorAvatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80',
+                image: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=800&q=80',
+                date: 'Nov 12, 2026',
+                readTime: '6 min read',
+                takeaways: [
+                    'Transit distance between East Asia and Northern Europe reduced by nearly 4,000 nautical miles.',
+                    'Polar Code compliance and heavy ice-class container ships see record commercial orders.',
+                    'Environmental concerns intensify over fragile Arctic ecosystem disturbance.'
+                ],
+                fullText: `
+                    <p>TROMSØ — Commercial vessel tracking services recorded unprecedented container freight tonnage moving through the Northern Sea Route during the 2026 transit season.</p>
+                    <p>Global supply chain managers grappling with maritime bottleneck vulnerabilities have increasingly diversified into Arctic trajectories. What was once considered an experimental voyage has formalized into scheduled logistics strings.</p>
+                    <p>However, the route brings complicated legal quandaries concerning maritime innocent passage rights, icebreaker escort fees, and environmental liability insurance in remote permafrost harbors.</p>
+                `
+            },
+            {
+                id: 'card-6',
+                category: 'economy',
+                badgeClass: 'badge-econ',
+                badgeText: 'Global Trade',
+                title: 'Critical Rare Earths Recycling: How Closed-Loop Urban Mining is Disrupting Mining Monopolies',
+                desc: 'Refining neodymium, dysprosium, and cobalt directly from decommissioned electric drives and wind turbine nacelles has created a self-sustaining domestic metallurgical market.',
+                author: 'Aisha Al-Mansoor',
+                role: 'Industrial Commodities Specialist',
+                authorAvatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=120&q=80',
+                image: 'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80',
+                date: 'Nov 11, 2026',
+                readTime: '4 min read',
+                takeaways: [
+                    'Recycled magnetic materials produce 92% fewer carbon emissions than virgin ore extraction.',
+                    'New hydrometallurgical bio-leaching processes achieve 98.4% element recovery purity.',
+                    'Reduces dependency on single-nation refining and processing supply chains.'
+                ],
+                fullText: `
+                    <p>STUTTGART & OSAKA — As first-generation electric mobility vehicles reach end-of-lifecycle retirement, an unexpected geopolitical counterweight has materialized: the urban mine.</p>
+                    <p>Rather than excavating raw monazite or bastnäsite ores half a world away, advanced recycling facilities in Europe and North America are reclaiming magnet-grade heavy rare earths from spent traction motors with unprecedented purity.</p>
+                    <p>Automotive OEMs are entering 15-year feedstock agreements with urban recycling hubs, solidifying closed loops that mitigate virgin ore reliance and insulate factory production against sudden export quotas.</p>
+                `
+            }
+        ];
+
+        // State Management
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let savedBookmarks = JSON.parse(localStorage.getItem('chronicle_bookmarks') || '[]');
+        let isAudioPlaying = false;
+        let audioInterval = null;
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            initDate();
+            renderArticles();
+            updateBookmarkBadge();
+            setupFilterTabs();
+            setupSearch();
+            setupTheme();
+        });
+
+        // Set Live Current Date
+        function initDate() {
+            const dateEl = document.getElementById('currentDate');
+            if (dateEl) {
+                const now = new Date();
+                const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+                dateEl.innerHTML = `
+                    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    ${now.toLocaleDateString('en-US', options)}
+                `;
+            }
+        }
+
+        // Render Articles Grid
+        function renderArticles() {
+            const grid = document.getElementById('articlesGrid');
+            const noResults = document.getElementById('noResults');
+
+            const filtered = articles.filter(art => {
+                if (art.id === 'lead' && activeCategory === 'all' && !searchQuery) return false; // Show lead in hero
+                const matchesCat = (activeCategory === 'all') || (art.category === activeCategory);
+                const matchesSearch = searchQuery === '' ||
+                    art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    art.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    art.author.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            grid.innerHTML = filtered.map(item => {
+                const isSaved = savedBookmarks.includes(item.id);
+                return `
+                    <article class="article-card" onclick="openArticleModal('${item.id}')">
+                        <div class="article-card-media">
+                            <span class="badge ${item.badgeClass} media-badge">${item.badgeText}</span>
+                            <button class="card-bookmark-btn ${isSaved ? 'saved' : ''}" 
+                                onclick="event.stopPropagation(); toggleBookmark('${item.id}', this)" 
+                                title="${isSaved ? 'Remove Bookmark' : 'Save Story'}">
+                                <svg width="15" height="15" fill="${isSaved ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                </svg>
+                            </button>
+                            <img src="${item.image}" alt="${item.title}" loading="lazy">
+                        </div>
+                        <div class="article-card-body">
+                            <div class="article-meta">
+                                <span>${item.date}</span>
+                                <span>${item.readTime}</span>
+                            </div>
+                            <h3 class="article-title">${item.title}</h3>
+                            <p class="article-desc">${item.desc}</p>
+                            <div class="article-footer">
+                                <div class="author-mini">
+                                    <img src="${item.authorAvatar}" class="author-mini-img" alt="${item.author}">
+                                    <span>${item.author}</span>
+                                </div>
+                                <span class="read-more-link">
+                                    Read Analysis
+                                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        // Setup Filter Tabs
+        function setupFilterTabs() {
+            const tabs = document.querySelectorAll('#categoryFilterTabs .tab-btn');
+            tabs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeCategory = btn.getAttribute('data-category');
+                    renderArticles();
+                });
+            });
+
+            // Nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navLinks.forEach(n => n.classList.remove('active'));
+                    link.classList.add('active');
+                    const cat = link.getAttribute('data-cat');
+                    setCategory(cat);
+                });
+            });
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            const tabBtn = document.querySelector(`#categoryFilterTabs .tab-btn[data-category="${cat}"]`);
+            if (tabBtn) {
+                document.querySelectorAll('#categoryFilterTabs .tab-btn').forEach(t => t.classList.remove('active'));
+                tabBtn.classList.add('active');
+            }
+            renderArticles();
+            document.getElementById('articlesGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function filterByTag(tagName) {
+            searchQuery = tagName;
+            const input = document.getElementById('searchInput');
+            if (input) input.value = '#' + tagName;
+            renderArticles();
+            document.getElementById('articlesGrid').scrollIntoView({ behavior: 'smooth' });
+            showToast(`Filtering by tag: #${tagName}`);
+        }
+
+        // Setup Instant Search
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.trim().replace(/^#/, '');
+                renderArticles();
+            });
+        }
+
+        // Sort Articles
+        function sortArticles() {
+            const val = document.getElementById('sortSelect').value;
+            if (val === 'readtime') {
+                articles.sort((a, b) => parseInt(a.readTime) - parseInt(b.readTime));
+            } else if (val === 'popular') {
+                articles.sort((a, b) => b.title.length - a.title.length);
+            } else {
+                // Default order
+                articles.sort((a, b) => a.id.localeCompare(b.id));
+            }
+            renderArticles();
+        }
+
+        // Bookmarking Feature with localStorage
+        function toggleBookmark(articleId, btn) {
+            const idx = savedBookmarks.indexOf(articleId);
+            if (idx > -1) {
+                savedBookmarks.splice(idx, 1);
+                showToast('Article removed from saved bookmarks');
+            } else {
+                savedBookmarks.push(articleId);
+                showToast('Article saved to your briefing list');
+            }
+            localStorage.setItem('chronicle_bookmarks', JSON.stringify(savedBookmarks));
+            updateBookmarkBadge();
+            renderArticles();
+        }
+
+        function updateBookmarkBadge() {
+            const badge = document.getElementById('bookmarkCount');
+            if (badge) {
+                badge.textContent = savedBookmarks.length;
+            }
+        }
+
+        function filterSavedArticles() {
+            if (savedBookmarks.length === 0) {
+                showToast('You have no saved articles yet');
+                return;
+            }
+            const grid = document.getElementById('articlesGrid');
+            const savedList = articles.filter(a => savedBookmarks.includes(a.id));
+            
+            document.querySelectorAll('#categoryFilterTabs .tab-btn').forEach(t => t.classList.remove('active'));
+            
+            grid.innerHTML = savedList.map(item => `
+                <article class="article-card" onclick="openArticleModal('${item.id}')">
+                    <div class="article-card-media">
+                        <span class="badge ${item.badgeClass} media-badge">${item.badgeText}</span>
+                        <img src="${item.image}" alt="${item.title}">
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-meta">
+                            <span>${item.date}</span>
+                            <span>${item.readTime}</span>
+                        </div>
+                        <h3 class="article-title">${item.title}</h3>
+                        <p class="article-desc">${item.desc}</p>
+                    </div>
+                </article>
+            `).join('');
+
+            showToast(`Displaying ${savedBookmarks.length} bookmarked dispatches`);
+            document.getElementById('articlesGrid').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Article Modal Viewer
+        function openArticleModal(id) {
+            let article = articles.find(a => a.id === id);
+            
+            // Fallback for mock items in timeline/sidebar
+            if (!article) {
+                article = {
+                    title: 'Diplomatic Communiqué & Real-Time Intelligence Update',
+                    badgeClass: 'badge-geo',
+                    badgeText: 'Live Dispatch',
+                    author: 'Editorial Desk',
+                    role: 'International Intelligence Division',
+                    date: 'Just Now',
+                    readTime: '3 min read',
+                    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
+                    takeaways: [
+                        'Verification protocols confirmed across regional maritime and financial monitoring hubs.',
+                        'Further official briefings scheduled for the upcoming ministerial plenary session.'
+                    ],
+                    fullText: `
+                        <p>This intelligence dispatch represents verified operational updates received through accredited diplomatic channels. Analysts note that ongoing realignments in energy transit and technological sovereignty will remain focal points over the current quarter.</p>
+                        <p>Follow-up analysis and full documentation dossiers will be compiled and distributed via the daily morning briefing.</p>
+                    `
+                };
+            }
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="meta-row">
+                    <span class="badge ${article.badgeClass || 'badge-geo'}">${article.badgeText || 'Dispatch'}</span>
+                    <span>${article.date || 'Today'}</span>
+                    <span>• ${article.readTime || '5 min read'}</span>
+                </div>
+                <h1 class="modal-headline">${article.title}</h1>
+                <div class="author-bar" style="margin-top: 0.8rem;">
+                    <div class="author-info">
+                        <img src="${article.authorAvatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80'}" class="author-avatar" alt="${article.author}">
+                        <div>
+                            <div class="author-name" style="color: var(--text-main);">${article.author}</div>
+                            <div class="author-role" style="color: var(--text-muted);">${article.role || 'Staff Analyst'}</div>
+                        </div>
+                    </div>
+                    <button class="btn-card-action" onclick="shareArticle('${article.title.replace(/'/g, "\\'")}')" title="Share Story">
+                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="reader-toolbar">
+                    <div class="font-controls">
+                        <span>Text Size:</span>
+                        <button class="font-btn" onclick="adjustFontSize(-1)">A-</button>
+                        <button class="font-btn" onclick="adjustFontSize(1)">A+</button>
+                    </div>
+                    <div>Institutional Grade Analysis</div>
+                </div>
+
+                <img src="${article.image}" class="modal-image" alt="${article.title}">
+
+                ${article.takeaways ? `
+                    <div class="key-takeaways">
+                        <h4>Key Strategic Takeaways</h4>
+                        <ul>
+                            ${article.takeaways.map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+
+                <div class="modal-reader-content" id="readerBody">
+                    ${article.fullText}
+                </div>
+            `;
+
+            document.getElementById('articleModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticleModal() {
+            document.getElementById('articleModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnBackdrop(e) {
+            if (e.target.id === 'articleModal') {
+                closeArticleModal();
+            }
+        }
+
+        // Adjust Font Size inside Reader
+        let currentFontSize = 1.05;
+        function adjustFontSize(delta) {
+            currentFontSize = Math.max(0.85, Math.min(1.4, currentFontSize + (delta * 0.1)));
+            const reader = document.getElementById('readerBody');
+            if (reader) {
+                reader.style.fontSize = `${currentFontSize}rem`;
+            }
+        }
+
+        // Dark / Light Theme Toggle
+        function setupTheme() {
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            const savedTheme = localStorage.getItem('chronicle_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+
+            toggleBtn.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const nextTheme = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                localStorage.setItem('chronicle_theme', nextTheme);
+                updateThemeIcon(nextTheme);
+                showToast(`Switched to ${nextTheme} mode`);
+            });
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            if (theme === 'light') {
+                // Moon icon
+                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>`;
+            } else {
+                // Sun icon
+                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />`;
+            }
+        }
+
+        // Audio Player Simulation
+        function toggleAudio() {
+            const btn = document.getElementById('audioBtn');
+            const bar = document.getElementById('audioBar');
+            const icon = document.getElementById('audioIcon');
+
+            if (!isAudioPlaying) {
+                isAudioPlaying = true;
+                icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+                showToast('Playing Chronicle Daily Audio Briefing');
+                let progress = 32;
+                audioInterval = setInterval(() => {
+                    progress = (progress + 2) % 100;
+                    bar.style.width = progress + '%';
+                }, 400);
+            } else {
+                isAudioPlaying = false;
+                icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                clearInterval(audioInterval);
+                showToast('Audio briefing paused');
+            }
+        }
+
+        // Newsletter Subscription Handler
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('subscriberEmail');
+            const email = emailInput.value.trim();
+            if (email) {
+                showToast(`Welcome! Morning Briefing confirmed for ${email}`);
+                emailInput.value = '';
+            }
+        }
+
+        // Share Link Functionality
+        function shareArticle(title) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                showToast(`Link copied: "${title}"`);
+            } else {
+                showToast(`Sharing link copied to clipboard`);
+            }
+        }
+
+        // Toast Feedback System
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3200);
+        }
+
+        // ESC Key to Close Modal
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeArticleModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
